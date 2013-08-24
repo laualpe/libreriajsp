@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"	pageEncoding="ISO-8859-1"%>
 <!-- sentencias de import necesarias para jdbc-->
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.Statement"%>
@@ -11,7 +11,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Lista de Libros</title>
 </head>
 
@@ -23,11 +23,11 @@
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			//1. Crea un objeto conexiÃ³n y un objeto sentencia.
+			//1. Crea un objeto conexión y un objeto sentencia.
 			conexion = DriverManager.getConnection("jdbc:mysql://localhost/libreria", "root", "clasesql");
 			sentencia = conexion.createStatement();
 			
-			//2. Crea una consulta SQL de selecciÃ³n para todos los libros de la tabla.
+			//2. Crea una consulta SQL de selección para todos los libros de la tabla.
 			String consultaSQL = "select isbn,titulo,categoria from Libros";
 			
 			//3. Ejecuta la sentencia con su SQL.
@@ -37,10 +37,10 @@
 			//5. Recorre el ResultSet y lo imprime en html.
 			while (rs.next()) {
 	%>
-	<%=rs.getString("isbn")%>
-	<%=rs.getString("titulo")%>
-	<%=rs.getString("categoria")%>
-	<br />
+				<%=rs.getString("isbn")%>
+				<%=rs.getString("titulo")%>
+				<%=rs.getString("categoria")%>
+				<br />
 	<%
 			}
 			
@@ -49,7 +49,7 @@
 		} catch (SQLException e) {
 			System.out.println("Error accediendo a la base de datos"+ e.getMessage());
 		} finally {
-			//6. Cierra los recursos (conexiÃ³n, sentencia, etc).
+			//6. Cierra los recursos (conexión, sentencia, etc).
 			if (rs != null) {
 				try {
 					rs.close();
